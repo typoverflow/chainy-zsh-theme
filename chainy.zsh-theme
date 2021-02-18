@@ -8,7 +8,10 @@ c_sha="%{$terminfo[bold]$FG[110]%}"
 c_conda="%{$terminfo[bold]$FG[105]%}"
 c_correct="%{$FG[150]%}"
 c_wrong="%{$FG[202]%}"
-
+c_ip="%{$terminfo[bold]$FG[069]%}"
+# icons
+i_correct="▶"
+i_wrong="▶"
 
 # necessary functions
 function prompt-length() {
@@ -48,7 +51,7 @@ function fill-line() {
 # get conda
 function conda_prompt_info() {
 	if [ -n "$CONDA_DEFAULT_ENV" ]; then
-		echo -n " $SEP ${c_conda}[$CONDA_DEFAULT_ENV]${c_reset}"
+		echo -n " $SEP ${c_conda}[\u25ce $CONDA_DEFAULT_ENV]${c_reset}"
 	else
 		echo -n ""
 	fi
@@ -65,20 +68,31 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="${c_git}]${c_reset}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${c_wrong}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="${c_correct}●"
 
+# get ip
+function ip_prompt_info() {
+	local ip="$(ip a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | awk -F "/" '{print $1}')"
+	if [ ! -z ${ip} ]; then
+		echo -n " $SEP ${c_ip}[\u269b ${ip}]${c_reset}"
+	else
+		echo -n ""
+	fi
+}
 
 function set-prompt() {
   emulate -L zsh
   local dir_info=" ${c_dir}[${PWD/#$HOME/~}]${c_reset}"
   local git_info="$(git_prompt_info)"
   local conda_info="$(conda_prompt_info)"
+  local ip_info="$(ip_prompt_info)"
 
   local top_left="${c_dash}╭──${c_reset}\
 ${dir_info}\
 ${git_info}\
-${conda_info} "
+${conda_info}\
+${ip_info} "
 
   local top_right="${c_dash} %T %n@%m${c_reset}"
-  local bottom_left="${c_dash}╰─${c_reset}%(?:${c_correct}> :${c_wrong}> )${c_reset}"
+  local bottom_left="${c_dash}╰─${c_reset}%(?:${c_correct}${i_correct} :${c_wrong}${i_wrong} )${c_reset}"
 
   local REPLY
   fill-line "$top_left" "$top_right"
