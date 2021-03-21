@@ -42,7 +42,7 @@ function fill-line() {
     # Not enough space for the right part. Drop it.
     typeset -g REPLY=$1
   else
-    local pad=${(pl.$pad_len..-.)}  # pad_len spaces
+    local pad=${(pl.$pad_len..─.)}  # pad_len spaces
     typeset -g REPLY=${1}${c_dash}${pad}${c_reset}${2}
   fi
 }
@@ -51,7 +51,7 @@ function fill-line() {
 # get conda
 function conda_prompt_info() {
 	if [ -n "$CONDA_DEFAULT_ENV" ]; then
-		echo -n " $SEP ${c_conda}[\u25ce $CONDA_DEFAULT_ENV]${c_reset}"
+		echo -n "$SEP${c_conda}[\u25ce $CONDA_DEFAULT_ENV]${c_reset}"
 	else
 		echo -n ""
 	fi
@@ -63,7 +63,7 @@ ZSH_THEME_GIT_PROMPT_SHA_BEFORE="${c_sha}("
 ZSH_THEME_GIT_PROMPT_SHA_AFTER=")${c_reset}"
 
 # Git info
-ZSH_THEME_GIT_PROMPT_PREFIX=" $SEP ${c_git}[\ue0a0 "
+ZSH_THEME_GIT_PROMPT_PREFIX="$SEP${c_git}[\ue0a0 "
 ZSH_THEME_GIT_PROMPT_SUFFIX="${c_git}]${c_reset}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${c_wrong}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="${c_correct}●"
@@ -72,7 +72,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="${c_correct}●"
 function ip_prompt_info() {
 	local ip="$(ip a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | awk -F "/" '{print $1}')"
 	if [ ! -z ${ip} ]; then
-		echo -n " $SEP ${c_ip}[\u269b ${ip}]${c_reset}"
+		echo -n "$SEP${c_ip}[\u269b ${ip}]${c_reset}"
 	else
 		echo -n ""
 	fi
