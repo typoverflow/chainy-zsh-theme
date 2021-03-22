@@ -69,7 +69,7 @@ if [[ -f ${FILE_PATH} ]]; then
 fi
 
 # <<<<<<< contents >>>>>>>>
-top_left='${c_dash}╭──${c_reset}'
+top_left='${c_dash}╭─${c_reset}'
 for block in "$@"; do
   if [[ ! $ALL_BLOCKS =~ "\\b${block}\\b" ]];then
     echo "Unrecognized block name ${block}";
@@ -167,12 +167,12 @@ function ip_prompt_info() {
 # main
 function set-prompt() {
   emulate -L zsh
-  local path_info=" ${c_dir}[${PWD/#$HOME/~}]${c_reset}"
+  local path_info="${SEP}${c_dir}[${PWD/#$HOME/~}]${c_reset}"
   local git_info="$(git_prompt_info)"
   local conda_info="$(conda_prompt_info)"
   local ip_info="$(ip_prompt_info)"
 
-  local top_left="'"${top_left}"' "
+  local top_left="'"${top_left}"'"
 
   local top_right="${c_dash} %T %n@%m${c_reset}"
   local bottom_left="${c_dash}╰─${c_reset}%(?:${c_correct}${i_correct} :${c_wrong}${i_wrong} )${c_reset}"
