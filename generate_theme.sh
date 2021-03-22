@@ -180,7 +180,7 @@ function set-prompt() {
   local REPLY
   fill-line "$top_left" "$top_right"
 
-  PROMPT=$REPLY$'\n'$bottom_left
+  PROMPT=$REPLY$'\''\\n'\''$bottom_left
 }
 
 setopt no_prompt_{bang,subst} prompt_{cr,percent,sp}
