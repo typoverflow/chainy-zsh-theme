@@ -39,11 +39,11 @@ mv chainy.zsh-theme ~/.oh-my-zsh/themes/
 ## 截图
 + 默认情况下，该主题会在第一行显示目录、时间、用户名主机名等信息，并在第二行开始接收命令
   
-![](img/2021-03-22-12-45-21.png)
+![](img/img2.png)
 
 + 存在git repo/ip/conda环境时，会显示当前branch和status
 
-![](img/2021-03-22-12-45-52.png)
+![](img/img3.png)
 
 ---
 ## TODO
