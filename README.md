@@ -27,7 +27,7 @@
     zsh generate_theme.sh git ip path
     ```
     上面的命令生成的主题文件为
-    ![](img/2021-03-22-12-40-49.png)
+    ![](img/img1.png)
 + (如果你实在不想使用上面的脚本，仓库里也有一个我最喜欢的默认主题文件~)
 + 生成主题文件后，移动到`~/.oh-my-zsh/themes/`目录下
 ```bash
