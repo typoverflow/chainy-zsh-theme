@@ -132,7 +132,7 @@ function fill-line() {
 # get conda
 function conda_prompt_info() {
 	if [ -n "$CONDA_DEFAULT_ENV" ]; then
-		echo -n "$SEP${c_conda}[\uf10c $CONDA_DEFAULT_ENV]${c_reset}"
+		echo -n "$SEP${c_conda}[\uf192 $CONDA_DEFAULT_ENV]${c_reset}"
 	else
 		echo -n ""
 	fi
