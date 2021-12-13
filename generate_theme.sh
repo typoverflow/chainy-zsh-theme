@@ -132,7 +132,7 @@ function fill-line() {
 # get conda
 function conda_prompt_info() {
 	if [ -n "$CONDA_DEFAULT_ENV" ]; then
-		echo -n "$SEP${c_conda}[\u25ce $CONDA_DEFAULT_ENV]${c_reset}"
+		echo -n "$SEP${c_conda}[\uf10c $CONDA_DEFAULT_ENV]${c_reset}"
 	else
 		echo -n ""
 	fi
@@ -142,14 +142,14 @@ function conda_prompt_info() {
 function ip_prompt_info() {
 	local ip="$(ip a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '\''{print $2}'\'' | awk -F "/" '\''{print $1}'\'' | head -n 1)"
 	if [ ! -z ${ip} ]; then
-		echo -n "$SEP${c_ip}[\u269b ${ip}]${c_reset}"
+		echo -n "$SEP${c_ip}[\ue764 ${ip}]${c_reset}"
 	else
 		echo -n ""
 	fi
 }
 
 # Git info
-ZSH_THEME_GIT_PROMPT_PREFIX="$SEP${c_git}[\ue0a0 "
+ZSH_THEME_GIT_PROMPT_PREFIX="$SEP${c_git}[\ue702 "
 ZSH_THEME_GIT_PROMPT_SUFFIX="${c_git}]${c_reset}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${c_wrong}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="${c_correct}●"

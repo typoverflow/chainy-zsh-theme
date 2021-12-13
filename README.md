@@ -6,7 +6,7 @@
 + [x] 借助`generate_theme.sh`脚本，可自由选择想要显示的信息块并生成对应的`.zsh-theme`文件
 
 ## 兼容性
-需要安装powerline-patched 字体才能正常显示部分图标，目前仅在[fira-code](https://github.com/tonsky/FiraCode)上进行过测试。
+需要安装nerd font字体才能正常显示图标。
 
 ## 安装与配置
 + 下载`generate_theme.sh`文件，使用该文件生成`.zsh-theme`。使用方法如下：
